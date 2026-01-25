@@ -1,0 +1,70 @@
+
+export type MetaProps =
+    | ({ name: string; content: string } & { [key: string]: string | undefined })
+    | ({ property: string; content: string } & { [key: string]: string | undefined })
+    | ({ httpEquiv: string; content: string } & { [key: string]: string | undefined })
+    | ({ charset: string } & { [key: string]: string | undefined })
+    | ({ itemProp: string; content: string } & { [key: string]: string | undefined });
+
+// Track rendered meta tags in development to detect duplicates
+const renderedMetaTags = new Set<string>();
+
+/**
+ * Renders a <meta> tag.
+ * React 19 will hoist this to the <head>.
+ */
+export function Meta(props: MetaProps) {
+    // Duplicate detection in development
+    if (process.env.NODE_ENV === 'development') {
+        let metaKey: string | null = null;
+
+        if ('name' in props) {
+            metaKey = `name:${props.name}`;
+        } else if ('property' in props) {
+            metaKey = `property:${props.property}`;
+        } else if ('httpEquiv' in props) {
+            metaKey = `httpEquiv:${props.httpEquiv}`;
+        }
+
+        if (metaKey) {
+            if (renderedMetaTags.has(metaKey)) {
+                console.warn(`[react-meta] Duplicate meta tag detected: ${metaKey}. Only the first one will be used by search engines.`);
+            } else {
+                renderedMetaTags.add(metaKey);
+            }
+        }
+    }
+
+    // Handle discriminated union properly instead of unsafe casting
+    if ('charset' in props) {
+        return <meta charSet={props.charset} />;
+    }
+    if ('httpEquiv' in props) {
+        return <meta httpEquiv={props.httpEquiv} content={props.content} />;
+    }
+    if ('name' in props) {
+        return <meta name={props.name} content={props.content} />;
+    }
+    if ('property' in props) {
+        return <meta property={props.property} content={props.content} />;
+    }
+    if ('itemProp' in props) {
+        return <meta itemProp={props.itemProp} content={props.content} />;
+    }
+
+    // Fallback - log error and don't render invalid tags
+    if (process.env.NODE_ENV === 'development') {
+        console.error('[react-meta] Invalid Meta props:', props);
+    }
+    return null;
+}
+
+/**
+ * Common meta tag presets for convenience.
+ */
+export const MetaPresets = {
+    description: (content: string) => <Meta name="description" content={content} />,
+    viewport: (content = "width=device-width, initial-scale=1") => <Meta name="viewport" content={content} />,
+    charset: (charset = "UTF-8") => <Meta charset={charset} />,
+    robots: (content: string) => <Meta name="robots" content={content} />,
+};

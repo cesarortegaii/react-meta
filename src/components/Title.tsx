@@ -1,0 +1,18 @@
+
+export interface TitleProps {
+    children: string;
+}
+
+/**
+ * Renders a <title> tag.
+ * React 19 will hoist this to the <head>.
+ * 
+ * Note: If multiple <Title> components are rendered, the last one wins.
+ * Avoid rendering multiple titles in the same component tree.
+ */
+export function Title({ children }: TitleProps) {
+    if (process.env.NODE_ENV === 'development' && !children.trim()) {
+        console.warn('[react-meta] <Title> should not be empty. Google may use the page URL as the title instead.');
+    }
+    return <title>{children}</title>;
+}

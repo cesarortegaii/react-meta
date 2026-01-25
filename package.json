@@ -1,0 +1,70 @@
+{
+    "name": "react-meta",
+    "version": "0.0.1",
+    "description": "The definitive React 19 SEO library. Lightweight, type-safe, and native.",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "require": "./dist/index.js",
+            "import": "./dist/index.mjs"
+        }
+    },
+    "bin": {
+        "react-meta": "./dist/sitemap.js"
+    },
+    "sideEffects": false,
+    "scripts": {
+        "build": "tsup",
+        "dev": "tsup --watch",
+        "test": "vitest run",
+        "lint": "tsc --noEmit"
+    },
+    "keywords": [
+        "react",
+        "seo",
+        "helmet",
+        "meta",
+        "head",
+        "react-19",
+        "rsc",
+        "json-ld",
+        "nextjs",
+        "remix",
+        "metadata",
+        "open-graph",
+        "schema-org",
+        "sitemap",
+        "twitter-card"
+    ],
+    "author": "Your Name <your.email@example.com> (https://yourwebsite.com)",
+    "license": "MIT",
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yourusername/react-meta"
+    },
+    "bugs": {
+        "url": "https://github.com/yourusername/react-meta/issues"
+    },
+    "peerDependencies": {
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "schema-dts": "^1.1.2"
+    },
+    "devDependencies": {
+        "@types/react": "^19.0.0",
+        "@types/react-dom": "^19.0.0",
+        "happy-dom": "^20.3.7",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "schema-dts": "^1.1.2",
+        "tsup": "^8.0.1",
+        "typescript": "^5.3.3",
+        "vitest": "^1.2.1"
+    }
+}
