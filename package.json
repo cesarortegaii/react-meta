@@ -1,7 +1,7 @@
 {
     "name": "react-meta-seo",
     "version": "0.0.2",
-    "description": "The definitive React 19 SEO library. Lightweight, type-safe, and native.",
+    "description": "The definitive SEO library for React 19. Zero-runtime overhead, compatible with RSC, type-safe JSON-LD, Sitemap generator, and Social Preview debugger.",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
     "types": "./dist/index.d.ts",
