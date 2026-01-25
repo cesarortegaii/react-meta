@@ -12,7 +12,7 @@ if (help) {
     --hostname <url>   Base URL (e.g., https://example.com) [REQUIRED]
     --out <path>       Output path (default: public/sitemap.xml)
     --routes <path>    Path to routes config JSON file (optional)
-                       Format: ["/" "/about"] or [{"url": "/", "priority": "1.0"}]
+                       Format: ["/", "/about"] or [{"url": "/", "priority": "1.0"}]
   `);
   process.exit(0);
 }
@@ -36,22 +36,39 @@ function escapeXML(str: string): string {
     .replace(/'/g, '&apos;');
 }
 
+/**
+ * Validates if a string is a valid ISO date
+ */
+function isValidDate(dateString: string): boolean {
+  const date = new Date(dateString);
+  return date instanceof Date && !isNaN(date.getTime());
+}
+
 console.log('Generating sitemap...');
 
 const hostname = args.find((_, i) => args[i - 1] === '--hostname');
 const outPath = args.find((_, i) => args[i - 1] === '--out') || 'public/sitemap.xml';
 const routesFile = args.find((_, i) => args[i - 1] === '--routes');
 
-// Validate hostname is required and not localhost
-if (!hostname || hostname.includes('localhost')) {
-  console.error('Error: --hostname is required and cannot be localhost');
+// Validate hostname is required and not localhost/private IP
+if (!hostname) {
+  console.error('Error: --hostname is required');
   console.error('Example: npx react-meta generate-sitemap --hostname https://example.com');
   process.exit(1);
 }
 
-// Validate URL format
+// Validate URL format and check for localhost/private IPs
 try {
-  new URL(hostname);
+  const url = new URL(hostname);
+  if (url.hostname === 'localhost' ||
+    url.hostname.startsWith('127.') ||
+    url.hostname.startsWith('192.168.') ||
+    url.hostname.startsWith('10.') ||
+    url.hostname === '0.0.0.0' ||
+    url.hostname === '[::1]') {
+    console.error('Error: --hostname must be a public domain, not localhost or private IP');
+    process.exit(1);
+  }
 } catch (e) {
   console.error(`Error: --hostname "${hostname}" is not a valid URL`);
   process.exit(1);
@@ -109,10 +126,15 @@ if (routesFile) {
   }
 }
 
-// Create directory if it doesn't exist
+// Create directory if it doesn't exist (fixes TOCTOU race condition)
 const dir = path.dirname(resolvedPath);
-if (!fs.existsSync(dir)) {
+try {
   fs.mkdirSync(dir, { recursive: true });
+} catch (err: any) {
+  if (err.code !== 'EEXIST') {
+    console.error('Error creating output directory:', err.message);
+    process.exit(1);
+  }
 }
 
 // Use streaming for better memory management with large sitemaps
@@ -121,10 +143,29 @@ const stream = fs.createWriteStream(resolvedPath);
 stream.write('<?xml version="1.0" encoding="UTF-8"?>\n');
 stream.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n');
 
+// Valid changefreq values
+const validFreqs: Array<RouteConfig['changefreq']> = ['always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never'];
+
 // Write each URL entry
 routes.forEach(route => {
-  const lastmod = route.lastmod || new Date().toISOString();
-  const changefreq = route.changefreq || 'daily';
+  // Validate and escape lastmod
+  let lastmod: string;
+  if (route.lastmod) {
+    if (isValidDate(route.lastmod)) {
+      lastmod = escapeXML(route.lastmod);
+    } else {
+      console.warn(`Invalid lastmod for ${route.url}: ${route.lastmod}. Using current date.`);
+      lastmod = new Date().toISOString();
+    }
+  } else {
+    lastmod = new Date().toISOString();
+  }
+
+  // Validate changefreq
+  const changefreq = route.changefreq && validFreqs.includes(route.changefreq)
+    ? route.changefreq
+    : 'daily';
+
   const priority = route.priority !== undefined ? route.priority : 1.0;
 
   stream.write(`  <url>\n`);

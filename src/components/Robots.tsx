@@ -50,5 +50,11 @@ export function Robots({
     if (maxImagePreview) directives.push(`max-image-preview:${maxImagePreview}`);
     if (maxVideoPreview !== undefined) directives.push(`max-video-preview:${maxVideoPreview}`);
 
+
+    // Don't render empty content attribute
+    if (directives.length === 0) {
+        return null; // No tag needed - defaults are assumed
+    }
+
     return <Meta name={botName} content={directives.join(', ')} />;
 }

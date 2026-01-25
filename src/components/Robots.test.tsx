@@ -5,8 +5,8 @@ import { Robots } from './Robots';
 describe('Robots', () => {
     it('renders standard index, follow by default (minimal output)', () => {
         const html = renderToStaticMarkup(<Robots />);
-        // Should be empty since index=true and follow=true are defaults
-        expect(html).toBe('<meta name="robots" content=""/>');
+        // Should be null since index=true and follow=true are defaults
+        expect(html).toBe('');
     });
 
     it('renders noindex, nofollow', () => {

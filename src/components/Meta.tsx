@@ -7,7 +7,16 @@ export type MetaProps =
     | ({ itemProp: string; content: string } & { [key: string]: string | undefined });
 
 // Track rendered meta tags in development to detect duplicates
+// Clear on navigation to prevent memory leaks in SPAs
 const renderedMetaTags = new Set<string>();
+
+if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+    const handleNavigation = () => renderedMetaTags.clear();
+    window.addEventListener('popstate', handleNavigation);
+    // Also clear on React Router navigation
+    window.addEventListener('pushstate', handleNavigation);
+    window.addEventListener('replacestate', handleNavigation);
+}
 
 /**
  * Renders a <meta> tag.
@@ -52,9 +61,9 @@ export function Meta(props: MetaProps) {
         return <meta itemProp={props.itemProp} content={props.content} />;
     }
 
-    // Fallback - log error and don't render invalid tags
+    // Fallback - throw in development for faster debugging
     if (process.env.NODE_ENV === 'development') {
-        console.error('[react-meta] Invalid Meta props:', props);
+        throw new Error(`[react-meta] Invalid Meta props: ${JSON.stringify(props)}`);
     }
     return null;
 }
