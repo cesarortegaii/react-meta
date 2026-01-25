@@ -175,6 +175,18 @@ Yes! All components work in both Server Components ("use server") and Client Com
 
 React Helmet uses legacy `react-side-effect` APIs that cause hydration overhead. `react-meta-seo` uses React 19's native hoisting, resulting in **0ms hydration cost** and full RSC compatibility.
 
+## Community
+
+- [Contributing Guide](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [License](LICENSE)
+
+## Author
+
+**Atharva Ralegankar**
+- GitHub: [@atharva262005](https://github.com/atharva262005)
+- Email: ralegankaratharva@gmail.com
+
 ## License
 
-MIT
+MIT © [Atharva Ralegankar](LICENSE)
