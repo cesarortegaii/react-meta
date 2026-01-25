@@ -39,17 +39,17 @@
         "sitemap",
         "twitter-card"
     ],
-    "author": "Your Name <your.email@example.com> (https://yourwebsite.com)",
+    "author": "Atharva Ralegankar <ralegankaratharva@gmail.com>",
     "license": "MIT",
     "engines": {
         "node": ">=18.0.0"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/yourusername/react-meta"
+        "url": "https://github.com/atharva262005/react-meta"
     },
     "bugs": {
-        "url": "https://github.com/yourusername/react-meta/issues"
+        "url": "https://github.com/atharva262005/react-meta/issues"
     },
     "peerDependencies": {
         "react": "^19.0.0",
