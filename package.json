@@ -12,6 +12,9 @@
             "import": "./dist/index.mjs"
         }
     },
+    "files": [
+        "dist"
+    ],
     "bin": {
         "react-meta": "./dist/sitemap.js"
     },
