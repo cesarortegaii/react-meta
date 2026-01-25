@@ -16,6 +16,7 @@ function App() {
             {/* 4. Social Cards */}
             <OpenGraph
                 title="React Meta Demo"
+                type="website"
                 description="See the social preview in the bottom right corner."
                 image="https://via.placeholder.com/1200x630"
                 url="https://react-meta.demo"
