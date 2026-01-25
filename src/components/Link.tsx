@@ -15,7 +15,7 @@ export function Link(props: LinkProps) {
 export const LinkPresets = {
     canonical: (href: string) => {
         if (process.env.NODE_ENV === 'development' && !href.startsWith('http')) {
-            console.warn(`[react-meta] Canonical URL must be absolute(e.g., https://example.com/page). Got: ${href}`);
+            console.warn(`[react-meta-seo] Canonical URL must be absolute(e.g., https://example.com/page). Got: ${href}`);
         }
         return <Link rel="canonical" href={href} />;
     },

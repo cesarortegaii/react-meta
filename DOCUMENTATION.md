@@ -1,9 +1,9 @@
-# react-meta ⚛️🔍
+# react-meta-seo ⚛️🔍
 
 **The Definitive SEO Library for React 19**
 
-[![npm version](https://img.shields.io/npm/v/react-meta.svg)](https://www.npmjs.com/package/react-meta)
-[![Bundle Size](https://img.shields.io/bundlephobia/minzip/react-meta)](https://bundlephobia.com/package/react-meta)
+[![npm version](https://img.shields.io/npm/v/react-meta-seo.svg)](https://www.npmjs.com/package/react-meta-seo)
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/react-meta-seo)](https://bundlephobia.com/package/react-meta-seo)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 > **Status**: Production-Ready for React 19+
@@ -14,7 +14,7 @@
 
 1. [Introduction](#introduction)
    - [The End of the Provider Era](#the-end-of-the-provider-era)
-   - [Why react-meta?](#why-react-meta)
+   - [Why react-meta-seo?](#why-react-meta-seo)
 2. [Installation](#installation)
 3. [Core Concepts](#core-concepts)
    - [Native Hoisting Explained](#native-hoisting-explained)
@@ -36,7 +36,7 @@
 
 ## Introduction
 
-`react-meta` is a lightweight (<5kB), type-safe SEO library built exclusively for React 19. It leverages React's native metadata hoisting primitives to provide **zero-runtime overhead** metadata management with **full Server Component support** and **streaming-safe rendering**.
+`react-meta-seo` is a lightweight (<5kB), type-safe SEO library built exclusively for React 19. It leverages React's native metadata hoisting primitives to provide **zero-runtime overhead** metadata management with **full Server Component support** and **streaming-safe rendering**.
 
 ### The End of the Provider Era
 
@@ -60,8 +60,8 @@ function Root() {
 With React 19's native hoisting, metadata tags automatically elevate to `<head>` **without any provider setup**:
 
 ```tsx
-// ✅ NEW WAY: react-meta
-import { Title, Meta } from 'react-meta';
+// ✅ NEW WAY: react-meta-seo
+import { Title, Meta } from 'react-meta-seo';
 
 export function Page() {
   return (
@@ -76,14 +76,14 @@ export function Page() {
 
 **That's it.** No wrappers. No context. Just native React 19.
 
-### Why react-meta?
+### Why react-meta-seo?
 
 - **🚀 React 19 Native**: Uses built-in `<title>`, `<meta>`, and `<link>` hoisting
 - **⚡ Zero Runtime Cost**: No side effects = 0ms hydration overhead
 - **🔒 Type-Safe**: Full TypeScript support with `schema-dts` integration
 - **🌊 Streaming-Safe**: Works perfectly with React Server Components (RSC)
 - **✅ Validated**: Development-mode warnings for missing SEO requirements
-- **🛠️ CLI Powered**: Auto-generate sitemaps with `npx react-meta generate-sitemap`
+- **🛠️ CLI Powered**: Auto-generate sitemaps with `npx react-meta-seo generate-sitemap`
 - **🎨 Dev Tools**: Built-in social preview overlay for debugging
 
 ---
@@ -91,7 +91,7 @@ export function Page() {
 ## Installation
 
 ```bash
-npm install react-meta schema-dts
+npm install react-meta-seo schema-dts
 ```
 
 ### Requirements
@@ -159,7 +159,7 @@ function ProductPage({ product }) {
 
 Traditional libraries use `componentDidMount` or `useEffect` to manipulate the DOM **after** React finishes rendering:
 
-| Metric | react-helmet | react-helmet-async | react-meta |
+| Metric | react-helmet | react-helmet-async | react-meta-seo |
 |--------|--------------|-------------------|------------|
 | **Hydration Overhead** | ~15ms | ~12ms | **0ms** ⚡ |
 | **Bundle Size** | 16kB | 14kB | **<5kB** |
@@ -174,7 +174,7 @@ Traditional libraries use `componentDidMount` or `useEffect` to manipulate the D
 3. **SEO Risk**: Search engine crawlers may see incomplete metadata
 4. **Provider Tax**: Requires context wrapping, increasing bundle size
 
-**react-meta's Solution:**
+**react-meta-seo's Solution:**
 
 React 19's native hoisting happens **during** the render phase, not after. This means:
 - ✅ Metadata is present in the initial SSR HTML
@@ -198,7 +198,7 @@ Renders a `<title>` tag that React 19 hoists to `<head>`.
 **Usage:**
 
 ```tsx
-import { Title } from 'react-meta';
+import { Title } from 'react-meta-seo';
 
 export function Page() {
   return <Title>My Awesome Page | Site Name</Title>;
@@ -239,7 +239,7 @@ type MetaProps =
 **Usage:**
 
 ```tsx
-import { Meta } from 'react-meta';
+import { Meta } from 'react-meta-seo';
 
 export function Page() {
   return (
@@ -259,7 +259,7 @@ export function Page() {
 Convenience functions for common meta tags:
 
 ```tsx
-import { MetaPresets } from 'react-meta';
+import { MetaPresets } from 'react-meta-seo';
 
 export function Page() {
   return (
@@ -290,7 +290,7 @@ interface LinkProps extends React.LinkHTMLAttributes<HTMLLinkElement> {}
 **Usage:**
 
 ```tsx
-import { Link } from 'react-meta';
+import { Link } from 'react-meta-seo';
 
 export function Page() {
   return (
@@ -309,7 +309,7 @@ export function Page() {
 Convenience functions for common link tags:
 
 ```tsx
-import { LinkPresets } from 'react-meta';
+import { LinkPresets } from 'react-meta-seo';
 
 export function Page() {
   return (
@@ -353,7 +353,7 @@ interface OpenGraphProps {
 **Usage:**
 
 ```tsx
-import { OpenGraph } from 'react-meta';
+import { OpenGraph } from 'react-meta-seo';
 
 export function ProductPage({ product }) {
   return (
@@ -409,7 +409,7 @@ interface TwitterCardProps {
 **Usage:**
 
 ```tsx
-import { TwitterCard } from 'react-meta';
+import { TwitterCard } from 'react-meta-seo';
 
 export function Page() {
   return (
@@ -467,7 +467,7 @@ interface RobotsProps {
 **Usage:**
 
 ```tsx
-import { Robots } from 'react-meta';
+import { Robots } from 'react-meta-seo';
 
 // Block indexing for staging/beta pages
 export function BetaPage() {
@@ -531,7 +531,7 @@ interface PreloadProps extends React.LinkHTMLAttributes<HTMLLinkElement> {
 **Usage:**
 
 ```tsx
-import { Preload } from 'react-meta';
+import { Preload } from 'react-meta-seo';
 
 export function Page() {
   return (
@@ -600,7 +600,7 @@ interface SchemaProps<T extends Thing> {
 **Usage:**
 
 ```tsx
-import { Schema } from 'react-meta';
+import { Schema } from 'react-meta-seo';
 import type { Product } from 'schema-dts';
 
 export function ProductPage({ product }) {
@@ -660,7 +660,7 @@ Type-safe presets for common schema types with enforced required fields.
 ##### `SchemaPresets.product()`
 
 ```tsx
-import { SchemaPresets, Schema } from 'react-meta';
+import { SchemaPresets, Schema } from 'react-meta-seo';
 
 export function ProductPage() {
   return (
@@ -701,7 +701,7 @@ product(
 ##### `SchemaPresets.article()`
 
 ```tsx
-import { SchemaPresets, Schema } from 'react-meta';
+import { SchemaPresets, Schema } from 'react-meta-seo';
 
 export function BlogPost() {
   return (
@@ -741,7 +741,7 @@ article(
 ##### `SchemaPresets.organization()`
 
 ```tsx
-import { SchemaPresets, Schema } from 'react-meta';
+import { SchemaPresets, Schema } from 'react-meta-seo';
 
 export function HomePage() {
   return (
@@ -782,7 +782,7 @@ organization(
 **Usage:**
 
 ```tsx
-import { SocialPreview } from 'react-meta';
+import { SocialPreview } from 'react-meta-seo';
 
 export default function App() {
   return (
@@ -815,7 +815,7 @@ Generate a standards-compliant XML sitemap for your build.
 #### Basic Usage
 
 ```bash
-npx react-meta generate-sitemap --hostname https://example.com
+npx react-meta-seo generate-sitemap --hostname https://example.com
 ```
 
 **Output:** `public/sitemap.xml`
@@ -898,7 +898,7 @@ npx react-meta generate-sitemap --hostname https://example.com
 #### Full Example
 
 ```bash
-npx react-meta generate-sitemap \
+npx react-meta-seo generate-sitemap \
   --hostname https://myapp.com \
   --routes ./routes.json \
   --out public/sitemap.xml
@@ -951,7 +951,7 @@ The CLI includes several security validations:
 {
   "scripts": {
     "build": "vite build",
-    "postbuild": "react-meta generate-sitemap --hostname https://myapp.com"
+    "postbuild": "react-meta-seo generate-sitemap --hostname https://myapp.com"
   }
 }
 ```
@@ -967,11 +967,11 @@ https://www.google.com/ping?sitemap=https://example.com/sitemap.xml
 
 ### 60-Second Migration from react-helmet-async
 
-#### Step 1: Install react-meta
+#### Step 1: Install react-meta-seo
 
 ```bash
 npm uninstall react-helmet-async
-npm install react-meta schema-dts
+npm install react-meta-seo schema-dts
 ```
 
 #### Step 2: Remove `<HelmetProvider>`
@@ -990,7 +990,7 @@ npm install react-meta schema-dts
 
 ```diff
 - import { Helmet } from 'react-helmet-async';
-+ import { Title, Meta, Link } from 'react-meta';
++ import { Title, Meta, Link } from 'react-meta-seo';
 ```
 
 #### Step 4: Replace `<Helmet>` with Individual Components
@@ -1015,10 +1015,10 @@ export function Page() {
 }
 ```
 
-**After (react-meta):**
+**After (react-meta-seo):**
 
 ```tsx
-import { Title, Meta, Link } from 'react-meta';
+import { Title, Meta, Link } from 'react-meta-seo';
 
 export function Page() {
   return (
@@ -1052,7 +1052,7 @@ export function Page() {
 **After:**
 
 ```tsx
-import { OpenGraph, TwitterCard } from 'react-meta';
+import { OpenGraph, TwitterCard } from 'react-meta-seo';
 
 <>
   <OpenGraph
@@ -1088,7 +1088,7 @@ import { OpenGraph, TwitterCard } from 'react-meta';
 **After:**
 
 ```tsx
-import { Schema, SchemaPresets } from 'react-meta';
+import { Schema, SchemaPresets } from 'react-meta-seo';
 
 <Schema
   data={SchemaPresets.product({
@@ -1111,7 +1111,7 @@ import { Schema, SchemaPresets } from 'react-meta';
 #### Migration Checklist
 
 - [ ] Remove `react-helmet-async` dependency
-- [ ] Install `react-meta` and `schema-dts`
+- [ ] Install `react-meta-seo` and `schema-dts`
 - [ ] Remove `<HelmetProvider>` wrapper
 - [ ] Replace all `<Helmet>` with individual components
 - [ ] Update social meta tags to use `<OpenGraph>` and `<TwitterCard>`
@@ -1123,9 +1123,9 @@ import { Schema, SchemaPresets } from 'react-meta';
 
 ## Comparison
 
-### react-meta vs react-helmet vs Next.js Metadata
+### react-meta-seo vs react-helmet vs Next.js Metadata
 
-| Feature | react-helmet | react-helmet-async | Next.js Metadata | react-meta |
+| Feature | react-helmet | react-helmet-async | Next.js Metadata | react-meta-seo |
 |---------|--------------|-------------------|------------------|------------|
 | **React Version** | Any | Any | 18+ | **19+ only** |
 | **Approach** | Side effects | Side effects | Framework magic | **Native hoisting** |
@@ -1141,13 +1141,13 @@ import { Schema, SchemaPresets } from 'react-meta';
 | **Social Preview** | ❌ No | ❌ No | ❌ No | ✅ **Dev overlay** |
 | **Duplicate Detection** | ❌ No | ❌ No | ⚠️ Build errors | ✅ **Dev warnings** |
 
-**When to use react-meta:**
+**When to use react-meta-seo:**
 - ✅ You're using **React 19+**
 - ✅ You need **framework-agnostic** SEO (works with Vite, Remix, etc.)
 - ✅ You want **zero runtime overhead**
 - ✅ You value **type safety** and **dev validation**
 
-**When NOT to use react-meta:**
+**When NOT to use react-meta-seo:**
 - ❌ You're stuck on **React 18 or earlier** (use react-helmet-async)
 - ❌ You're using **Next.js and prefer framework conventions** (use Next.js Metadata API)
 
@@ -1205,11 +1205,11 @@ import { Schema, SchemaPresets } from 'react-meta';
 
 **Development Warning:**
 
-react-meta detects duplicates and warns in the console:
+react-meta-seo detects duplicates and warns in the console:
 
 ```
-[react-meta] Multiple <Title> components detected. Only the last one will be used.
-[react-meta] Duplicate meta tag detected: name:description. Only the first one will be used by search engines.
+[react-meta-seo] Multiple <Title> components detected. Only the last one will be used.
+[react-meta-seo] Duplicate meta tag detected: name:description. Only the first one will be used by search engines.
 ```
 
 ---
@@ -1249,7 +1249,7 @@ const data = JSON.parse(document.getElementById('__DATA__').textContent);
 
 **Example:**
 ```
-[react-meta] <Schema.Product> is missing "image". This is recommended for rich results.
+[react-meta-seo] <Schema.Product> is missing "image". This is recommended for rich results.
 ```
 
 **Solution:** Add the missing field:
@@ -1276,7 +1276,7 @@ const data = JSON.parse(document.getElementById('__DATA__').textContent);
 
 ```bash
 mkdir -p public
-npx react-meta generate-sitemap --hostname https://example.com --out public/sitemap.xml
+npx react-meta-seo generate-sitemap --hostname https://example.com --out public/sitemap.xml
 ```
 
 ---
@@ -1357,7 +1357,7 @@ Boost Largest Contentful Paint by preloading hero images with high priority:
 If you have multiple URLs for the same content (e.g., `?utm_source=twitter`), use canonical tags:
 
 ```tsx
-import { LinkPresets } from 'react-meta';
+import { LinkPresets } from 'react-meta-seo';
 
 export function ProductPage({ canonicalUrl }) {
   return (
@@ -1520,8 +1520,8 @@ MIT © [Atharva Ralegankar]
 
 Contributions are welcome! This library is experimental and feedback is appreciated.
 
-**GitHub:** https://github.com/atharva262005/react-meta
-**Issues:** https://github.com/atharva262005/react-meta/issues
+**GitHub:** https://github.com/atharva262005/react-meta-seo
+**Issues:** https://github.com/atharva262005/react-meta-seo/issues
 
 ---
 

@@ -1,10 +1,10 @@
-# react-meta ⚛️🔍
+# react-meta-seo ⚛️🔍
 
 **The definitive SEO library for React 19.**
 
 > **Status**: Experimental (React 19 Beta/RC required)
 
-`react-meta` is a lightweight (< 5kB minified), type-safe SEO library built exclusively for React 19. It leverages React's native metadata hoisting primitive, removing the need for `react-side-effect` or heavy context providers.
+`react-meta-seo` is a lightweight (< 5kB minified), type-safe SEO library built exclusively for React 19. It leverages React's native metadata hoisting primitive, removing the need for `react-side-effect` or heavy context providers.
 
 ## Features 🚀
 
@@ -12,20 +12,20 @@
 - **RSC Compatible**: Works in Server Components.
 - **Preloading**: Smart resource preloading via `<Preload />`.
 - **Dynamic Robots**: Control indexing with `<Robots index={false} />`.
-- **CLI Power**: Auto-generate sitemaps via `npx react-meta generate-sitemap`.
+- **CLI Power**: Auto-generate sitemaps via `npx react-meta-seo generate-sitemap`.
 - **JSON-LD**: Typed Schema.org components with **Dev Validation**.
 - **Social Preview**: Built-in development overlay.
 
 ## 🎯 Live Demo
 
-**[See the Social Preview in action →](https://example-demo-react-meta.vercel.app)**
+**[See the Social Preview in action →](https://react-meta-seo-demo.vercel.app)**
 
 Deploy the `example/` directory to see all features working live.
 
 ## Installation
 
 ```bash
-npm install react-meta schema-dts
+npm install react-meta-seo schema-dts
 ```
 
 > **Note**: `schema-dts` is a peer dependency that provides TypeScript types for Schema.org structured data. It's a type-only library and won't increase your runtime bundle size.
@@ -38,7 +38,7 @@ npm install react-meta schema-dts
 
 | Library | Hydration Overhead | Bundle Size | Native Hoisting |
 |---------|-------------------|-------------|-----------------|
-| **react-meta** | **0ms** ⚡ | **< 5kB** | ✅ |
+| **react-meta-seo** | **0ms** ⚡ | **< 5kB** | ✅ |
 | React Helmet | ~15ms | ~16kB | ❌ |
 | React Helmet Async | ~12ms | ~14kB | ❌ |
 
@@ -50,7 +50,7 @@ npm install react-meta schema-dts
 ### 1. Basic Metadata & Preloading
 
 ```tsx
-import { Title, Meta, Preload } from 'react-meta';
+import { Title, Meta, Preload } from 'react-meta-seo';
 
 export default function Page() {
   return (
@@ -67,7 +67,7 @@ export default function Page() {
 ### 2. Dynamic Robots Control
 
 ```tsx
-import { Robots } from 'react-meta';
+import { Robots } from 'react-meta-seo';
 
 export default function ProductPage({ product }) {
   // Automatically add noindex if out of stock
@@ -77,10 +77,10 @@ export default function ProductPage({ product }) {
 
 ### 3. Structured Data (Validated)
 
-If you miss a required field (like `image` for a Product), `react-meta` will warn you in the console during development.
+If you miss a required field (like `image` for a Product), `react-meta-seo` will warn you in the console during development.
 
 ```tsx
-import { Schema, SchemaPresets } from 'react-meta';
+import { Schema, SchemaPresets } from 'react-meta-seo';
 
 export default function ProductPage() {
   return (
@@ -100,7 +100,7 @@ export default function ProductPage() {
 Generate a standard sitemap for your build.
 
 ```bash
-npx react-meta generate-sitemap --hostname https://myapp.com --out public/sitemap.xml
+npx react-meta-seo generate-sitemap --hostname https://myapp.com --out public/sitemap.xml
 ```
 
 ### 5. Social Preview Debugger
@@ -108,7 +108,7 @@ npx react-meta generate-sitemap --hostname https://myapp.com --out public/sitema
 Add to your root component during development to see how your page looks on Google and Twitter.
 
 ```tsx
-import { SocialPreview } from 'react-meta';
+import { SocialPreview } from 'react-meta-seo';
 
 export default function App() {
   return (
@@ -120,9 +120,9 @@ export default function App() {
 }
 ```
 
-## Why react-meta?
+## Why react-meta-seo?
 
-| Feature | React Helmet | Next.js | react-meta |
+| Feature | React Helmet | Next.js | react-meta-seo |
 |---------|--------------|---------|------------|
 | **Core** | Legacy side-effect | Native | **Native React 19** |
 | **Sitemap** | Manual | Built-in | **CLI Generator** |
@@ -134,7 +134,7 @@ export default function App() {
 
 ```diff
 - import { Helmet } from 'react-helmet';
-+ import { Title, Meta } from 'react-meta';
++ import { Title, Meta } from 'react-meta-seo';
 
 - <Helmet>
 -   <title>My Page</title>
@@ -170,7 +170,7 @@ Yes! All components work in both Server Components ("use server") and Client Com
 
 ### How does this compare to React Helmet?
 
-React Helmet uses legacy `react-side-effect` APIs that cause hydration overhead. `react-meta` uses React 19's native hoisting, resulting in **0ms hydration cost** and full RSC compatibility.
+React Helmet uses legacy `react-side-effect` APIs that cause hydration overhead. `react-meta-seo` uses React 19's native hoisting, resulting in **0ms hydration cost** and full RSC compatibility.
 
 ## License
 

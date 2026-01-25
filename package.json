@@ -1,6 +1,6 @@
 {
-    "name": "react-meta",
-    "version": "0.0.1",
+    "name": "react-meta-seo",
+    "version": "0.0.2",
     "description": "The definitive React 19 SEO library. Lightweight, type-safe, and native.",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
@@ -16,7 +16,7 @@
         "dist"
     ],
     "bin": {
-        "react-meta": "./dist/sitemap.js"
+        "react-meta-seo": "dist/sitemap.js"
     },
     "sideEffects": false,
     "scripts": {
@@ -49,12 +49,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/atharva262005/react-meta"
+        "url": "git+https://github.com/atharva262005/react-meta.git"
     },
     "bugs": {
         "url": "https://github.com/atharva262005/react-meta/issues"
     },
-    "homepage": "https://example-demo-react-meta.vercel.app",
+    "homepage": "https://react-meta-seo-demo.vercel.app",
     "peerDependencies": {
         "react": "^19.0.0",
         "react-dom": "^19.0.0",

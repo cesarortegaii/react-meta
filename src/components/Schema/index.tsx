@@ -17,7 +17,7 @@ export function Schema<T extends Thing>({ data }: SchemaProps<T>) {
         // Validate @context
         if (!anyData['@context']) {
             console.error(
-                '[react-meta] Schema missing "@context". Add "@context": "https://schema.org" to your schema data.'
+                '[react-meta-seo] Schema missing "@context". Add "@context": "https://schema.org" to your schema data.'
             );
         }
 
@@ -28,12 +28,12 @@ export function Schema<T extends Thing>({ data }: SchemaProps<T>) {
         if (schemaType === 'Product') {
             if (!anyData.offers && !anyData.aggregateRating) {
                 console.warn(
-                    '[react-meta] <Schema.Product> is missing "offers" or "aggregateRating". Google may not show rich snippets. See: https://developers.google.com/search/docs/appearance/structured-data/product'
+                    '[react-meta-seo] <Schema.Product> is missing "offers" or "aggregateRating". Google may not show rich snippets. See: https://developers.google.com/search/docs/appearance/structured-data/product'
                 );
             }
             if (!anyData.image) {
                 console.warn(
-                    '[react-meta] <Schema.Product> is missing "image". This is recommended for rich results.'
+                    '[react-meta-seo] <Schema.Product> is missing "image". This is recommended for rich results.'
                 );
             }
         }
@@ -41,29 +41,29 @@ export function Schema<T extends Thing>({ data }: SchemaProps<T>) {
         // Article validation
         if (schemaType === 'Article') {
             if (!anyData.headline) {
-                console.warn('[react-meta] <Schema.Article> is missing required "headline" field.');
+                console.warn('[react-meta-seo] <Schema.Article> is missing required "headline" field.');
             }
             if (!anyData.image) {
-                console.warn('[react-meta] <Schema.Article> is missing required "image" field.');
+                console.warn('[react-meta-seo] <Schema.Article> is missing required "image" field.');
             }
             if (!anyData.datePublished) {
-                console.warn('[react-meta] <Schema.Article> is missing required "datePublished" field.');
+                console.warn('[react-meta-seo] <Schema.Article> is missing required "datePublished" field.');
             }
             if (!anyData.author) {
-                console.warn('[react-meta] <Schema.Article> is missing required "author" field.');
+                console.warn('[react-meta-seo] <Schema.Article> is missing required "author" field.');
             }
         }
 
         // Review validation
         if (schemaType === 'Review') {
             if (!anyData.itemReviewed) {
-                console.warn('[react-meta] <Schema.Review> is missing required "itemReviewed" field.');
+                console.warn('[react-meta-seo] <Schema.Review> is missing required "itemReviewed" field.');
             }
             if (!anyData.reviewRating) {
-                console.warn('[react-meta] <Schema.Review> is missing required "reviewRating" field.');
+                console.warn('[react-meta-seo] <Schema.Review> is missing required "reviewRating" field.');
             }
             if (!anyData.author) {
-                console.warn('[react-meta] <Schema.Review> is missing required "author" field.');
+                console.warn('[react-meta-seo] <Schema.Review> is missing required "author" field.');
             }
         }
     }

@@ -26,8 +26,6 @@ export default defineConfig([
         treeshake: true,
         platform: 'node',
         target: 'node18', // Match engines requirement
-        banner: {
-            js: '#!/usr/bin/env node\n', // Ensure shebang is always present
-        },
+
     },
 ]);

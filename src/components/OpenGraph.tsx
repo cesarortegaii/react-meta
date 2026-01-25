@@ -20,7 +20,7 @@ export interface OpenGraphProps {
 export function OpenGraph({ title, type, image, url, description, siteName, locale, ...rest }: OpenGraphProps) {
     // Validate og:image is absolute URL
     if (process.env.NODE_ENV === 'development' && image && !image.startsWith('http')) {
-        console.warn(`[react-meta] og:image must be an absolute URL (e.g., https://example.com/image.jpg). Got: ${image}`);
+        console.warn(`[react-meta-seo] og:image must be an absolute URL (e.g., https://example.com/image.jpg). Got: ${image}`);
     }
 
     const ogTags = [
@@ -59,7 +59,7 @@ export interface TwitterCardProps {
 export function TwitterCard({ card, site, creator, title, description, image, ...rest }: TwitterCardProps) {
     // Validate twitter:image is absolute URL
     if (process.env.NODE_ENV === 'development' && image && !image.startsWith('http')) {
-        console.warn(`[react-meta] twitter:image must be an absolute URL (e.g., https://example.com/image.jpg). Got: ${image}`);
+        console.warn(`[react-meta-seo] twitter:image must be an absolute URL (e.g., https://example.com/image.jpg). Got: ${image}`);
     }
 
     const twitterTags = [

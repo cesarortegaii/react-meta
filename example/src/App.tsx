@@ -1,4 +1,4 @@
-import { Title, Meta, Robots, Preload, OpenGraph, SocialPreview, Schema, SchemaPresets } from 'react-meta';
+import { Title, Meta, Robots, Preload, OpenGraph, SocialPreview, Schema, SchemaPresets } from 'react-meta-seo';
 
 function App() {
     return (
@@ -58,7 +58,7 @@ function App() {
             </section>
 
             {/* 6. The Dev Tool */}
-            <SocialPreview />
+            {process.env.NODE_ENV === 'development' && <SocialPreview />}
         </div>
     )
 }

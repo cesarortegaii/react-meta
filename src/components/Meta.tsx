@@ -37,7 +37,7 @@ export function Meta(props: MetaProps) {
 
         if (metaKey) {
             if (renderedMetaTags.has(metaKey)) {
-                console.warn(`[react-meta] Duplicate meta tag detected: ${metaKey}. Only the first one will be used by search engines.`);
+                console.warn(`[react-meta-seo] Duplicate meta tag detected: ${metaKey}. Only the first one will be used by search engines.`);
             } else {
                 renderedMetaTags.add(metaKey);
             }
@@ -63,7 +63,7 @@ export function Meta(props: MetaProps) {
 
     // Fallback - throw in development for faster debugging
     if (process.env.NODE_ENV === 'development') {
-        throw new Error(`[react-meta] Invalid Meta props: ${JSON.stringify(props)}`);
+        throw new Error(`[react-meta-seo] Invalid Meta props: ${JSON.stringify(props)}`);
     }
     return null;
 }

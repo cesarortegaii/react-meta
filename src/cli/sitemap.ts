@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import fs from 'fs';
 import path from 'path';
 
@@ -6,7 +7,7 @@ const help = args.includes('--help');
 
 if (help) {
   console.log(`
-  Usage: react-meta generate-sitemap [options]
+  Usage: react-meta-seo generate-sitemap [options]
 
   Options:
     --hostname <url>   Base URL (e.g., https://example.com) [REQUIRED]

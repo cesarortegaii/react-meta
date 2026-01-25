@@ -27,15 +27,20 @@ function subscribeToMetaTags(callback: () => void) {
     return () => observer.disconnect();
 }
 
+// Cache for snapshot stability
+let currentSnapshot: PreviewData = { title: '', description: '', image: '', url: '' };
+let currentJSON = JSON.stringify(currentSnapshot);
+
 /**
  * Get current meta tag snapshot
+ * Must return stable reference if data hasn't changed to prevent infinite loops
  */
 function getMetaSnapshot(): PreviewData {
     if (typeof document === 'undefined') {
-        return { title: '', description: '', image: '', url: '' };
+        return currentSnapshot;
     }
 
-    return {
+    const newSnapshot = {
         title: document.querySelector<HTMLMetaElement>('meta[property="og:title"]')?.content || document.title,
         description: document.querySelector<HTMLMetaElement>('meta[property="og:description"]')?.content ||
             document.querySelector<HTMLMetaElement>('meta[name="description"]')?.content || '',
@@ -43,6 +48,14 @@ function getMetaSnapshot(): PreviewData {
         url: document.querySelector<HTMLMetaElement>('meta[property="og:url"]')?.content ||
             window.location.href,
     };
+
+    const newJSON = JSON.stringify(newSnapshot);
+    if (newJSON !== currentJSON) {
+        currentSnapshot = newSnapshot;
+        currentJSON = newJSON;
+    }
+
+    return currentSnapshot;
 }
 
 /**
@@ -55,6 +68,11 @@ function getMetaSnapshot(): PreviewData {
  * ```
  */
 export function SocialPreview() {
+    // Safety guard: only run in development
+    if (process.env.NODE_ENV !== 'development') {
+        return null;
+    }
+
     // Use useSyncExternalStore for React 19 SSR compatibility
     const data = useSyncExternalStore(
         subscribeToMetaTags,

@@ -20,7 +20,7 @@ export function Preload(props: PreloadProps) {
     // Still warn in development for awareness
     if (process.env.NODE_ENV === 'development' && props.as === 'font' && !props.crossOrigin) {
         console.warn(
-            `[react-meta] Font preload automatically set crossOrigin="anonymous". This is required for fonts to load properly.`
+            `[react-meta-seo] Font preload automatically set crossOrigin="anonymous". This is required for fonts to load properly.`
         );
     }
 

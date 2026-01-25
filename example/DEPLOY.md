@@ -21,14 +21,14 @@ Follow the prompts:
 - Set up and deploy? **Y**
 - Which scope? (Your Vercel account)
 - Link to existing project? **N**
-- Project name: **react-meta-demo** (or your choice)
+- Project name: **react-meta-seo-demo** (or your choice)
 - Directory: **./example**
 - Override settings? **N**
 
 ## Option 2: Deploy via Vercel Dashboard
 
 1. Go to https://vercel.com/new
-2. Import from Git: Select your `react-meta` repository
+2. Import from Git: Select your `react-meta-seo` repository
 3. Configure project:
    - **Framework Preset**: Vite
    - **Root Directory**: `example`
@@ -38,7 +38,7 @@ Follow the prompts:
 
 ## After Deployment
 
-1. **Copy the deployment URL** (e.g., `https://react-meta-demo.vercel.app`)
+1. **Copy the deployment URL** (e.g., `https://react-meta-seo-demo.vercel.app`)
 2. **Update README.md** with the live demo link
 3. **Update package.json** homepage field
 

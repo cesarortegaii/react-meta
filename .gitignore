@@ -19,3 +19,4 @@ coverage
 test-*.xml
 test-routes.json
 public/test-sitemap.xml
+.vercel
