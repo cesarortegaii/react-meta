@@ -51,6 +51,7 @@
     "bugs": {
         "url": "https://github.com/atharva262005/react-meta/issues"
     },
+    "homepage": "https://example-demo-react-meta.vercel.app",
     "peerDependencies": {
         "react": "^19.0.0",
         "react-dom": "^19.0.0",

@@ -18,7 +18,7 @@
 
 ## 🎯 Live Demo
 
-**[See the Social Preview in action →](https://your-demo-url.vercel.app)**
+**[See the Social Preview in action →](https://example-demo-react-meta.vercel.app)**
 
 Deploy the `example/` directory to see all features working live.
 
