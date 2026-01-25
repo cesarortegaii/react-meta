@@ -45,6 +45,7 @@ npm install react-meta schema-dts
 *Benchmarked using React 19 RC with Chrome DevTools Performance profiling.*
 
 ## Usage
+> **Read the [Full Documentation](DOCUMENTATION.md) for advanced usage, API reference, and migration guides.**
 
 ### 1. Basic Metadata & Preloading
 
