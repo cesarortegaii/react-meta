@@ -8,7 +8,7 @@ function App() {
             <Meta name="description" content="A live demonstation of react-meta's capabilities including Social Preview, Schema, and Robots control." />
 
             {/* 2. Smart Preloading */}
-            <Preload href="https://example.com/hero.jpg" as="image" />
+            <Preload href="https://placehold.co/800x400.png" as="image" />
 
             {/* 3. Dynamic Robots */}
             <Robots index={true} follow={true} />
@@ -18,7 +18,7 @@ function App() {
                 title="React Meta Demo"
                 type="website"
                 description="See the social preview in the bottom right corner."
-                image="https://via.placeholder.com/1200x630"
+                image="https://placehold.co/1200x630.png"
                 url="https://react-meta.demo"
             />
 
@@ -57,8 +57,18 @@ function App() {
                 </ul>
             </section>
 
-            {/* 6. The Dev Tool */}
-            {process.env.NODE_ENV === 'development' && <SocialPreview />}
+            {/* Consuming the preloaded image */}
+            <section style={{ marginTop: '2rem' }}>
+                <h3>Preloaded Hero Image:</h3>
+                <img
+                    src="https://placehold.co/800x400.png"
+                    alt="Preloaded Hero"
+                    style={{ width: '100%', maxWidth: '600px', borderRadius: '8px', marginTop: '1rem' }}
+                />
+            </section>
+
+            {/* 6. The Dev Tool - Forces visibility for the demo */}
+            <SocialPreview forceVisible={true} />
         </div>
     )
 }

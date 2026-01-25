@@ -40,7 +40,12 @@
         "open-graph",
         "schema-org",
         "sitemap",
-        "twitter-card"
+        "twitter-card",
+        "react-component",
+        "seo-library",
+        "react-hooks",
+        "typescript",
+        "react-19-ready"
     ],
     "author": "Atharva Ralegankar <ralegankaratharva@gmail.com>",
     "license": "MIT",

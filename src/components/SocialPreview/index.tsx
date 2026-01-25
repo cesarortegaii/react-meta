@@ -67,9 +67,13 @@ function getMetaSnapshot(): PreviewData {
  * {process.env.NODE_ENV === 'development' && <SocialPreview />}
  * ```
  */
-export function SocialPreview() {
-    // Safety guard: only run in development
-    if (process.env.NODE_ENV !== 'development') {
+export interface SocialPreviewProps {
+    forceVisible?: boolean;
+}
+
+export function SocialPreview({ forceVisible }: SocialPreviewProps) {
+    // Safety guard: only run in development unless forced
+    if (process.env.NODE_ENV !== 'development' && !forceVisible) {
         return null;
     }
 

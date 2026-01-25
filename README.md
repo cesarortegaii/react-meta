@@ -2,6 +2,9 @@
 
 **The definitive SEO library for React 19.**
 
+[![npm version](https://img.shields.io/npm/v/react-meta-seo.svg)](https://www.npmjs.com/package/react-meta-seo)
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/react-meta-seo)](https://bundlephobia.com/package/react-meta-seo)
+
 > **Status**: Experimental (React 19 Beta/RC required)
 
 `react-meta-seo` is a lightweight (< 5kB minified), type-safe SEO library built exclusively for React 19. It leverages React's native metadata hoisting primitive, removing the need for `react-side-effect` or heavy context providers.
