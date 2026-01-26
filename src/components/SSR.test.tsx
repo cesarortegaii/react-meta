@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { renderToString } from 'react-dom/server';
-import { Title, Meta, Schema, SchemaPresets } from 'react-meta-seo';
+import { Title, Meta, Schema, SchemaPresets } from '../index';
 
 describe('SSR Compatibility', () => {
     it('Title renders correct HTML string', () => {
