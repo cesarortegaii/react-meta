@@ -16,7 +16,7 @@ export default function Home() {
       "price": "0",
       "priceCurrency": "USD"
     },
-    "softwareVersion": "0.0.8",
+    "softwareVersion": "0.1.0",
     "releaseNotes": "https://react-meta-seo.vercel.app/changelog",
     "programmingLanguage": "TypeScript, React",
     "description": "Zero-runtime overhead SEO library for React 19 with native metadata hoisting",
