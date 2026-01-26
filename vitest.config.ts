@@ -2,7 +2,7 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
     test: {
-        environment: 'node', // React 19 SSR testing primarily
+        environment: 'happy-dom', // Browser-like environment for DOM tests
         globals: true,
         coverage: {
             provider: 'v8',

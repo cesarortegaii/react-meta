@@ -1,13 +1,10 @@
 import type { Thing, WithContext } from 'schema-dts';
+import { logger } from '../../utils/logger';
 
 export interface SchemaProps<T extends Thing> {
     data: WithContext<T>;
+    onError?: (error: unknown) => void;
 }
-
-/**
- * React 19 will hoist this to the <head> (or body, but head is preferred for SEO).
- */
-import { logger } from '../../utils/logger';
 
 // Helper to validate schema data in development
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -65,7 +62,8 @@ function validateSchema(anyData: any) {
         }
     }
 }
-export function Schema<T extends Thing>({ data }: SchemaProps<T>) {
+
+export function Schema<T extends Thing>({ data, onError }: SchemaProps<T>) {
     if (process.env.NODE_ENV === 'development') {
         validateSchema(data);
     }
@@ -85,9 +83,14 @@ export function Schema<T extends Thing>({ data }: SchemaProps<T>) {
             />
         );
     } catch (e) {
+        if (onError) {
+            onError(e);
+        }
         if (process.env.NODE_ENV === 'development') {
             logger.error('Failed to serialize Schema data:', e);
         }
         return null; // Fail gracefully instead of crashing the page
     }
 }
+
+export * from './presets';

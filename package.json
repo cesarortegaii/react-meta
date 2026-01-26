@@ -1,6 +1,6 @@
 {
     "name": "react-meta-seo",
-    "version": "0.0.4",
+    "version": "0.0.8",
     "description": "The definitive SEO library for React 19. Zero-runtime overhead, compatible with RSC, type-safe JSON-LD, Sitemap generator, and Social Preview debugger.",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
@@ -71,6 +71,7 @@
         "schema-dts": "^1.1.2"
     },
     "devDependencies": {
+        "@testing-library/react": "^16.3.2",
         "@types/react": "^19.0.0",
         "@types/react-dom": "^19.0.0",
         "@vitest/coverage-v8": "^1.2.1",

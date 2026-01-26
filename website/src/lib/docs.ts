@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Path to the root DOCUMENTATION.md
-const DOCS_PATH = path.join(process.cwd(), '../DOCUMENTATION.md');
+const DOCS_PATH = path.join(process.cwd(), 'DOCUMENTATION.md');
 
 export function getDocumentationContent() {
     try {
