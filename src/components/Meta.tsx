@@ -6,41 +6,18 @@ export type MetaProps =
     | ({ charset: string } & { [key: string]: string | undefined })
     | ({ itemProp: string; content: string } & { [key: string]: string | undefined });
 
-// Track rendered meta tags in development to detect duplicates
-// Clear on navigation to prevent memory leaks in SPAs
-const renderedMetaTags = new Set<string>();
-
-if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
-    const handleNavigation = () => renderedMetaTags.clear();
-    window.addEventListener('popstate', handleNavigation);
-    // Also clear on React Router navigation
-    window.addEventListener('pushstate', handleNavigation);
-    window.addEventListener('replacestate', handleNavigation);
-}
+// Track rendered meta tags in development to detect duplicates (REMOVED: SSR Safe)
+// React 19 automatically handles deduping of most meta tags if keys match.
 
 /**
  * Renders a <meta> tag.
  * React 19 will hoist this to the <head>.
  */
 export function Meta(props: MetaProps) {
-    // Duplicate detection in development
+    // Basic warnings in development only (stateless)
     if (process.env.NODE_ENV === 'development') {
-        let metaKey: string | null = null;
-
-        if ('name' in props) {
-            metaKey = `name:${props.name}`;
-        } else if ('property' in props) {
-            metaKey = `property:${props.property}`;
-        } else if ('httpEquiv' in props) {
-            metaKey = `httpEquiv:${props.httpEquiv}`;
-        }
-
-        if (metaKey) {
-            if (renderedMetaTags.has(metaKey)) {
-                console.warn(`[react-meta-seo] Duplicate meta tag detected: ${metaKey}. Only the first one will be used by search engines.`);
-            } else {
-                renderedMetaTags.add(metaKey);
-            }
+        if ('name' in props && !props.name) {
+            console.warn('[react-meta-seo] Meta tag missing "name".');
         }
     }
 
