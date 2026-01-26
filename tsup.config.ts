@@ -3,10 +3,10 @@ import { defineConfig } from 'tsup';
 export default defineConfig([
     {
         // Library bundle - optimized for browser
-        entry: ['src/index.ts'],
+        entry: ['src/index.ts', 'src/preview.ts'],
         format: ['cjs', 'esm'],
         dts: true,
-        splitting: false,
+        splitting: true,
         sourcemap: true,
         clean: true,
         minify: true,
