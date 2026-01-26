@@ -1,6 +1,5 @@
 'use client';
 import { Title, Meta } from 'react-meta-seo';
-import { SocialPreview } from 'react-meta-seo/preview';
 import { ArrowRight, Code2, Rocket, Search } from 'lucide-react';
 import Link from 'next/link';
 
@@ -9,7 +8,6 @@ export default function Home() {
     <main className="min-h-screen bg-neutral-950 text-neutral-50 selection:bg-blue-500/30">
       <Title>react-meta-seo | The SEO Library for React 19</Title>
       <Meta name="description" content="Zero-runtime overhead, RSC-compatible SEO library for React 19. Native hoisting, type-safety, and built-in social previews." />
-      <SocialPreview forceVisible />
 
       {/* Hero Section */}
       <section className="relative px-6 py-24 md:py-32 lg:py-40 overflow-hidden">
