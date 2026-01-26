@@ -1,5 +1,5 @@
 'use client';
-import { useSyncExternalStore, useState, memo } from 'react';
+import { useSyncExternalStore, useState, memo, useEffect } from 'react';
 
 interface PreviewData {
     title: string;
@@ -84,7 +84,17 @@ export const SocialPreview = memo(function SocialPreview({ forceVisible }: Socia
         getMetaSnapshot // Server snapshot (same as client for this use case)
     );
 
+    const [isMounted, setIsMounted] = useState(false);
     const [activeTab, setActiveTab] = useState<'google' | 'twitter'>('google');
+
+    // Fix Hydration Mismatch: Only render on client via useEffect
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted) {
+        return null;
+    }
 
     return (
         <div className="social-preview-overlay">

@@ -19,9 +19,9 @@
 - **JSON-LD**: Typed Schema.org components with **Dev Validation**.
 - **Social Preview**: Built-in development overlay.
 
-## 🎯 Live Demo
+## 🎯 Website
 
-**[See the Social Preview in action →](https://react-meta-seo-demo.vercel.app)**
+**[Visit the Website & Documentation →](https://react-meta-seo.vercel.app)**
 
 Deploy the `example/` directory to see all features working live.
 

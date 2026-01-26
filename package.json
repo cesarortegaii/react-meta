@@ -1,6 +1,6 @@
 {
     "name": "react-meta-seo",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "The definitive SEO library for React 19. Zero-runtime overhead, compatible with RSC, type-safe JSON-LD, Sitemap generator, and Social Preview debugger.",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
@@ -64,7 +64,7 @@
     "bugs": {
         "url": "https://github.com/atharva262005/react-meta/issues"
     },
-    "homepage": "https://react-meta-seo-demo.vercel.app",
+    "homepage": "https://react-meta-seo.vercel.app",
     "peerDependencies": {
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
