@@ -53,7 +53,6 @@ describe('Meta Component Coverage', () => {
 
     it('warns in development if name is empty', () => {
         process.env = { ...originalEnv, NODE_ENV: 'development' };
-        // @ts-expect-error - testing invalid prop
         render(<Meta name="" content="test" />);
         expect(mockLogger.warn).toHaveBeenCalledWith('Meta tag missing "name".');
     });
