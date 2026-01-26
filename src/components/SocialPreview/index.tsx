@@ -1,5 +1,5 @@
 'use client';
-import { useSyncExternalStore, useState } from 'react';
+import { useSyncExternalStore, useState, memo } from 'react';
 
 interface PreviewData {
     title: string;
@@ -71,7 +71,7 @@ export interface SocialPreviewProps {
     forceVisible?: boolean;
 }
 
-export function SocialPreview({ forceVisible }: SocialPreviewProps) {
+export const SocialPreview = memo(function SocialPreview({ forceVisible }: SocialPreviewProps) {
     // Safety guard: only run in development unless forced
     if (process.env.NODE_ENV !== 'development' && !forceVisible) {
         return null;
@@ -137,4 +137,4 @@ export function SocialPreview({ forceVisible }: SocialPreviewProps) {
             </div>
         </div>
     );
-}
+});

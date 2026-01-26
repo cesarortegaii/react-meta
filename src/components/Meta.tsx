@@ -50,9 +50,31 @@ export function Meta(props: MetaProps) {
 /**
  * Common meta tag presets for convenience.
  */
+/**
+ * Common meta tag presets for convenience.
+ */
 export const MetaPresets = {
+    /**
+     * Standard SEO description.
+     * @param content - Page description (recommended: 50-160 chars)
+     */
     description: (content: string) => <Meta name="description" content={content} />,
+
+    /**
+     * Viewport configuration for responsive design.
+     * @param content - default: "width=device-width, initial-scale=1"
+     */
     viewport: (content = "width=device-width, initial-scale=1") => <Meta name="viewport" content={content} />,
+
+    /**
+     * Character encoding declaration.
+     * @param charset - default: "UTF-8"
+     */
     charset: (charset = "UTF-8") => <Meta charset={charset} />,
+
+    /**
+     * Robots indexing directives.
+     * @param content - e.g., "index, follow" or "noindex"
+     */
     robots: (content: string) => <Meta name="robots" content={content} />,
 };
