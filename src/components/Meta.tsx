@@ -50,9 +50,6 @@ export function Meta(props: MetaProps) {
 /**
  * Common meta tag presets for convenience.
  */
-/**
- * Common meta tag presets for convenience.
- */
 export const MetaPresets = {
     /**
      * Standard SEO description.

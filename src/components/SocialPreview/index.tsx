@@ -138,3 +138,5 @@ export const SocialPreview = memo(function SocialPreview({ forceVisible }: Socia
         </div>
     );
 });
+
+SocialPreview.displayName = 'SocialPreview';
