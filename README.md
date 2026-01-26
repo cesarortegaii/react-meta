@@ -5,9 +5,9 @@
 [![npm version](https://img.shields.io/npm/v/react-meta-seo.svg)](https://www.npmjs.com/package/react-meta-seo)
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/react-meta-seo)](https://bundlephobia.com/package/react-meta-seo)
 
-> **Status**: Experimental (React 19 Beta/RC required)
+> **Status**: Production-Ready for React 19+ | [📚 Full Documentation](https://react-meta-seo.vercel.app)
 
-`react-meta-seo` is a lightweight (< 5kB minified), type-safe SEO library built exclusively for React 19. It leverages React's native metadata hoisting primitive, removing the need for `react-side-effect` or heavy context providers.
+`react-meta-seo` is a lightweight (**< 2kB** minified/gzipped), type-safe SEO library built exclusively for React 19. It leverages React's native metadata hoisting primitive, removing the need for `react-side-effect` or heavy context providers.
 
 ## Features 🚀
 
@@ -41,7 +41,7 @@ npm install react-meta-seo schema-dts
 
 | Library | Hydration Overhead | Bundle Size | Native Hoisting |
 |---------|-------------------|-------------|-----------------|
-| **react-meta-seo** | **0ms** ⚡ | **< 5kB** | ✅ |
+| **react-meta-seo** | **0ms** ⚡ | **< 2kB** | ✅ |
 | React Helmet | ~15ms | ~16kB | ❌ |
 | React Helmet Async | ~12ms | ~14kB | ❌ |
 
@@ -106,6 +106,11 @@ Generate a standard sitemap for your build.
 npx react-meta-seo generate-sitemap --hostname https://myapp.com --out public/sitemap.xml
 ```
 
+**Advanced Usage with Dynamic Routes:**
+```bash
+npx react-meta-seo generate-sitemap --hostname https://myapp.com --routes ./routes.json
+```
+
 ### 5. Social Preview Debugger
 
 Add to your root component during development to see how your page looks on Google and Twitter.
@@ -126,11 +131,11 @@ export default function App() {
 ## Why react-meta-seo?
 
 | Feature | React Helmet | Next.js | react-meta-seo |
-|---------|--------------|---------|------------|
+|---------|--------------|---------|----------------|
 | **Core** | Legacy side-effect | Native | **Native React 19** |
 | **Sitemap** | Manual | Built-in | **CLI Generator** |
 | **Validation**| None | None | **Dev Warnings** |
-| **Bundle** | ~16kB | N/A | **< 5kB** |
+| **Bundle** | ~16kB | N/A | **< 2kB** |
 | **Setup** | `<Provider>` | Framework | **Zero Config** |
 
 ## Migration from React Helmet

@@ -26,11 +26,14 @@
    - [Structured Data](#structured-data)
 5. [CLI Tools](#cli-tools)
    - [Sitemap Generator](#sitemap-generator)
-6. [Migration Guide](#migration-guide)
+6. [Security & Reliability](#security--reliability)
+   - [JSON-LD Escaping](#json-ld-escaping)
+   - [CLI Security](#cli-security)
+7. [Migration Guide](#migration-guide)
    - [60-Second Migration from react-helmet-async](#60-second-migration-from-react-helmet-async)
-7. [Comparison](#comparison)
-8. [Troubleshooting](#troubleshooting)
-9. [Pro Tips](#pro-tips)
+8. [Comparison](#comparison)
+9. [Troubleshooting](#troubleshooting)
+10. [Pro Tips](#pro-tips)
 
 ---
 
@@ -1522,21 +1525,6 @@ Contributions are welcome! This library is experimental and feedback is apprecia
 
 **GitHub:** https://github.com/atharva262005/react-meta-seo
 **Issues:** https://github.com/atharva262005/react-meta-seo/issues
-
----
-
-## Changelog
-
-### v0.0.1 (Beta)
-
-- Initial release
-- React 19 native hoisting support
-- Core components: `<Title>`, `<Meta>`, `<Link>`
-- Social metadata: `<OpenGraph>`, `<TwitterCard>`
-- Advanced SEO: `<Robots>`, `<Preload>`
-- Structured data: `<Schema>`, `SchemaPresets`
-- CLI: Sitemap generator
-- Dev tools: `<SocialPreview>` overlay
 
 ---
 

@@ -1,20 +1,20 @@
-import { getDocumentationContent } from '@/lib/docs';
+import { getComparisonContent } from '@/lib/docs';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
 import { Title, Meta } from 'react-meta-seo';
-import { BookOpen } from 'lucide-react';
+import { ArrowLeftRight } from 'lucide-react';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { Navigation } from '@/components/Navigation';
 
-export default async function DocsPage() {
-    const content = getDocumentationContent();
+export default async function ComparisonPage() {
+    const content = getComparisonContent();
 
     return (
         <div className="min-h-screen bg-[#0A0A0A] text-neutral-200 selection:bg-blue-500/30">
-            <Title>Documentation | react-meta-seo</Title>
-            <Meta name="description" content="Comprehensive documentation for react-meta-seo. Integration guides, API reference, and migration tutorials." />
+            <Title>Comparison | react-meta-seo</Title>
+            <Meta name="description" content="Compare react-meta-seo with react-helmet and Next.js Metadata API. See the performance benefits of React 19 native hoisting." />
 
             {/* Blur Backend */}
             <div className="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/10 via-[#0A0A0A] to-[#0A0A0A]" />
@@ -31,6 +31,7 @@ export default async function DocsPage() {
                         prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-white
                         prose-h1:text-4xl prose-h1:mb-8 prose-h1:pb-4 prose-h1:border-b prose-h1:border-white/10
                         prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6
+                        prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
                         prose-p:text-neutral-400 prose-p:leading-7
                         prose-a:text-blue-400 prose-a:no-underline hover:prose-a:text-blue-300 hover:prose-a:underline
                         prose-code:text-blue-200 prose-code:bg-blue-500/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none
@@ -38,6 +39,7 @@ export default async function DocsPage() {
                         prose-img:rounded-xl prose-img:border prose-img:border-white/10
                         prose-strong:text-white
                         prose-ul:text-neutral-400
+                        prose-li:text-neutral-400
                         prose-table:border-collapse prose-th:text-left prose-th:p-4 prose-th:text-white prose-th:bg-white/5 prose-td:p-4 prose-td:text-neutral-400 prose-td:border-b prose-td:border-white/5
                     ">
                             <ReactMarkdown
@@ -67,28 +69,22 @@ export default async function DocsPage() {
                         <div className="sticky top-24 space-y-6">
                             <div className="rounded-xl border border-white/5 bg-white/[0.02] p-6 backdrop-blur-sm">
                                 <h3 className="flex items-center gap-2 font-semibold text-white mb-4">
-                                    <BookOpen className="h-4 w-4 text-blue-400" />
-                                    On this page
+                                    <ArrowLeftRight className="h-4 w-4 text-blue-400" />
+                                    Head-to-Head
                                 </h3>
-                                <div className="text-sm text-neutral-500">
-                                    {/* Note: Real TOC parsing would happen here. For now static placeholder or we rely on the markdown's TOC */}
-                                    <p className="text-xs uppercase tracking-wider font-medium text-neutral-600 mb-2">Structure</p>
-                                    <ul className="space-y-2.5">
-                                        <li><a href="#introduction" className="hover:text-blue-400 transition-colors block">Introduction</a></li>
-                                        <li><a href="#core-concepts" className="hover:text-blue-400 transition-colors block">Core Concepts</a></li>
-                                        <li><a href="#api-reference" className="hover:text-blue-400 transition-colors block">API Reference</a></li>
-                                        <li><a href="#advanced-seo" className="hover:text-blue-400 transition-colors block">Advanced SEO</a></li>
-                                        <li><a href="#migration-guide" className="hover:text-blue-400 transition-colors block">Migration Guide</a></li>
-                                    </ul>
-                                </div>
+                                <p className="text-sm text-neutral-400">
+                                    See how react-meta-seo compares to other popular SEO libraries.
+                                </p>
                             </div>
 
-                            <div className="rounded-xl bg-gradient-to-br from-blue-600 to-violet-600 p-6 text-white shadow-2xl shadow-blue-900/20">
-                                <h3 className="font-bold text-lg mb-2">Ready to ship?</h3>
-                                <p className="text-blue-100 text-sm mb-4">Get the best SEO performance for your React 19 app today.</p>
-                                <div className="bg-white/10 rounded-lg p-2 font-mono text-xs flex items-center justify-between cursor-pointer hover:bg-white/20 transition-colors">
-                                    <span>npm i react-meta-seo</span>
-                                </div>
+                            <div className="rounded-xl bg-gradient-to-br from-cyan-600 to-blue-600 p-6 text-white shadow-2xl shadow-cyan-900/20">
+                                <h3 className="font-bold text-lg mb-2">Why Choose Us?</h3>
+                                <p className="text-cyan-100 text-sm mb-4">Zero overhead, full type safety, React 19 native.</p>
+                                <ul className="text-sm space-y-2 text-cyan-100">
+                                    <li>⚡ 0ms hydration cost</li>
+                                    <li>📦 &lt;5kB bundle size</li>
+                                    <li>🔒 Type-safe schemas</li>
+                                </ul>
                             </div>
                         </div>
                     </aside>
