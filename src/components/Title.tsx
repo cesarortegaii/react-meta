@@ -1,4 +1,6 @@
 
+import { logger } from '../utils/logger';
+
 export interface TitleProps {
     children: string;
 }
@@ -14,7 +16,7 @@ export function Title({ children }: TitleProps) {
     if (process.env.NODE_ENV === 'development') {
         // Type guard for SSR safety
         if (typeof children === 'string' && !children.trim()) {
-            console.warn('[react-meta-seo] <Title> should not be empty. Google may use the page URL as the title instead.');
+            logger.warn('<Title> should not be empty. Google may use the page URL as the title instead.');
         }
     }
     return <title>{children}</title>;

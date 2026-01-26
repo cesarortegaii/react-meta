@@ -7,12 +7,15 @@ export interface SchemaProps<T extends Thing> {
 /**
  * React 19 will hoist this to the <head> (or body, but head is preferred for SEO).
  */
+import { logger } from '../../utils/logger';
+
+// Helper to validate schema data in development
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function validateSchema(anyData: any) {
     // Validate @context
     if (!anyData['@context']) {
-        console.error(
-            '[react-meta-seo] Schema missing "@context". Add "@context": "https://schema.org" to your schema data.'
+        logger.error(
+            'Schema missing "@context". Add "@context": "https://schema.org" to your schema data.'
         );
     }
 
@@ -22,13 +25,13 @@ function validateSchema(anyData: any) {
     // Product validation
     if (schemaType === 'Product') {
         if (!anyData.offers && !anyData.aggregateRating) {
-            console.warn(
-                '[react-meta-seo] <Schema.Product> is missing "offers" or "aggregateRating". Google may not show rich snippets. See: https://developers.google.com/search/docs/appearance/structured-data/product'
+            logger.warn(
+                '<Schema.Product> is missing "offers" or "aggregateRating". Google may not show rich snippets. See: https://developers.google.com/search/docs/appearance/structured-data/product'
             );
         }
         if (!anyData.image) {
-            console.warn(
-                '[react-meta-seo] <Schema.Product> is missing "image". This is recommended for rich results.'
+            logger.warn(
+                '<Schema.Product> is missing "image". This is recommended for rich results.'
             );
         }
     }
@@ -36,29 +39,29 @@ function validateSchema(anyData: any) {
     // Article validation
     if (schemaType === 'Article') {
         if (!anyData.headline) {
-            console.warn('[react-meta-seo] <Schema.Article> is missing required "headline" field.');
+            logger.warn('<Schema.Article> is missing required "headline" field.');
         }
         if (!anyData.image) {
-            console.warn('[react-meta-seo] <Schema.Article> is missing required "image" field.');
+            logger.warn('<Schema.Article> is missing required "image" field.');
         }
         if (!anyData.datePublished) {
-            console.warn('[react-meta-seo] <Schema.Article> is missing required "datePublished" field.');
+            logger.warn('<Schema.Article> is missing required "datePublished" field.');
         }
         if (!anyData.author) {
-            console.warn('[react-meta-seo] <Schema.Article> is missing required "author" field.');
+            logger.warn('<Schema.Article> is missing required "author" field.');
         }
     }
 
     // Review validation
     if (schemaType === 'Review') {
         if (!anyData.itemReviewed) {
-            console.warn('[react-meta-seo] <Schema.Review> is missing required "itemReviewed" field.');
+            logger.warn('<Schema.Review> is missing required "itemReviewed" field.');
         }
         if (!anyData.reviewRating) {
-            console.warn('[react-meta-seo] <Schema.Review> is missing required "reviewRating" field.');
+            logger.warn('<Schema.Review> is missing required "reviewRating" field.');
         }
         if (!anyData.author) {
-            console.warn('[react-meta-seo] <Schema.Review> is missing required "author" field.');
+            logger.warn('<Schema.Review> is missing required "author" field.');
         }
     }
 }
@@ -83,7 +86,7 @@ export function Schema<T extends Thing>({ data }: SchemaProps<T>) {
         );
     } catch (e) {
         if (process.env.NODE_ENV === 'development') {
-            console.error('[react-meta-seo] Failed to serialize Schema data:', e);
+            logger.error('Failed to serialize Schema data:', e);
         }
         return null; // Fail gracefully instead of crashing the page
     }

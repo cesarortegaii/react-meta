@@ -22,7 +22,7 @@
     "scripts": {
         "build": "tsup",
         "dev": "tsup --watch",
-        "test": "vitest run",
+        "test": "vitest run --coverage",
         "lint": "tsc --noEmit"
     },
     "keywords": [
@@ -68,6 +68,7 @@
     "devDependencies": {
         "@types/react": "^19.0.0",
         "@types/react-dom": "^19.0.0",
+        "@vitest/coverage-v8": "^1.2.1",
         "happy-dom": "^20.3.7",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",

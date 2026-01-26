@@ -1,3 +1,4 @@
+import { logger } from '../utils/logger';
 
 export type MetaProps =
     | ({ name: string; content: string } & { [key: string]: string | undefined })
@@ -17,7 +18,7 @@ export function Meta(props: MetaProps) {
     // Basic warnings in development only (stateless)
     if (process.env.NODE_ENV === 'development') {
         if ('name' in props && !props.name) {
-            console.warn('[react-meta-seo] Meta tag missing "name".');
+            logger.warn('Meta tag missing "name".');
         }
     }
 
@@ -40,6 +41,7 @@ export function Meta(props: MetaProps) {
 
     // Fallback - throw in development for faster debugging
     if (process.env.NODE_ENV === 'development') {
+        logger.error(`Invalid Meta props: ${JSON.stringify(props)}`);
         throw new Error(`[react-meta-seo] Invalid Meta props: ${JSON.stringify(props)}`);
     }
     return null;
